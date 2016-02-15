@@ -1,3 +1,5 @@
+package org;
+
 public class JNIDemo
 {
 	public static relex okapi_interface;

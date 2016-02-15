@@ -1,3 +1,5 @@
+package org;
+
 public class pair extends java.lang.Object{
 	public String key;
 	public Object value;

@@ -1,3 +1,5 @@
+package org;
+
 /**
  *  This is the okapi JNI interface to accessing okapi's native C interface
  *  in Java.

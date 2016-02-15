@@ -1,3 +1,5 @@
+package org;
+
 import java.util.*;
 import java.io.*;
 import java.awt.*;
@@ -24,15 +26,15 @@ import javax.swing.text.JTextComponent.*;
  */
 public class javokapi{
     // JNI pointer 
-    private relex jC;
+    private OkapiJNI jC;
     /**
      * Constructs a javokapi object with initially created Okapi JNI.
      */
     public javokapi(){
         //makeOkapi();
         //buildJNI();
-        jC = new relex();
-        jC.x = new relex();        
+        jC = new OkapiJNI();
+        jC.x = new OkapiJNI();        
         jC.x.javainit();
     }
 	
@@ -163,44 +165,44 @@ public class javokapi{
             runCommand("sh create_index.sh " + mem +" nodelfinal nodoclens " +param + " " + indexNumber, binPath);
     }
     //uses the Notepad class to open the dbName file in directory folder
-    private void openFile(String directory, String dbName){
-        JFrame f = new JFrame();
-        Notepad applet = new Notepad();
-        f.setTitle(directory + dbName);
-        f.setBackground(Color.lightGray);
-        f.getContentPane().add(applet, BorderLayout.CENTER);
-        f.addWindowListener(new appCloseL());
-        f.setSize(800, 500);
-        f.setVisible(true);
-        applet.openFile(directory, dbName);
-    }
+//    private void openFile(String directory, String dbName){
+//        JFrame f = new JFrame();
+//        Notepad applet = new Notepad();
+//        f.setTitle(directory + dbName);
+//        f.setBackground(Color.lightGray);
+//        f.getContentPane().add(applet, BorderLayout.CENTER);
+//        f.addWindowListener(new appCloseL());
+//        f.setSize(800, 500);
+//        f.setVisible(true);
+//        applet.openFile(directory, dbName);
+//    }
     /**
      * Launches a Notepad window to edit the main parameter file using the BSS_PARAMPATH environment
      * variable default set to databases directory. This file is used for converting the parsed data
      * and creating indexes.
      * @param dbName name of the main parameter file
      */
-    public void setMainParameter(String dbName){
-        openFile(System.getenv("BSS_PARMPATH"), dbName);
-    }
+//    public void setMainParameter(String dbName){
+//        openFile(System.getenv("BSS_PARMPATH"), dbName);
+//    }
     /**
      * Launches a Notepad window to edit the DB field types parameter file using the BSS_PARAMPATH environment
      * variable default set to databases directory. Each database has a single field type parameter file called <db_name>.field_types.
      * This file is used for converting the parsed data and creating indexes.
      * @param dbName name of the field types parameter file without extension
      */
-    public void setFieldTypesParamFile(String dbName){
-        openFile(System.getenv("BSS_PARMPATH"), dbName+".field_types");
-    }
+//    public void setFieldTypesParamFile(String dbName){
+//        openFile(System.getenv("BSS_PARMPATH"), dbName+".field_types");
+//    }
    /**
      * Launches a Notepad window to edit the DB search groups parameter file using the BSS_PARAMPATH environment
      * variable default set to databases directory. Each database has a single search groups parameter file called <db_name>.search_groups.
      * There is one entry per DB index in this file. This file is used for converting the parsed data and creating indexes.
      * @param dbName name of the search groups parameter file without extension
      */
-    public void setSearchGroupsParamFile(String dbName){
-        openFile(System.getenv("BSS_PARMPATH"), dbName+".search_groups");
-    }
+//    public void setSearchGroupsParamFile(String dbName){
+//        openFile(System.getenv("BSS_PARMPATH"), dbName+".search_groups");
+//    }
     /**
      * Chooses the given Okapi database, resets all values to their defaults and destroys any existing search sets.
      * @param dbName name of the Okapi database to be chosen and opened

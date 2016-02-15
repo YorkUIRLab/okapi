@@ -1,3 +1,4 @@
+package org;
 
 import java.io.*;
 import java.util.*;
@@ -11,7 +12,13 @@ public class relex {
     public native void javainit();
 
     public native String comm(String command);
+    
     static {
-        System.loadLibrary("relex");
+        System.loadLibrary("OkapiJNI");
     }
+    
+//    public static void main(String[] args) {
+//    	
+//    }
+
 }

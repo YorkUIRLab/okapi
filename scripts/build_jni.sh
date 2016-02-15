@@ -1,15 +1,21 @@
 #!/bin/bash
 
 source /home/okapi/environmentSettings.bshrc
-cd $OKAPI_JAVASRC
-javac -d $OKAPI_JAVABIN relex.java
+#cd $OKAPI_JAVASRC
+#javac -d $OKAPI_JAVABIN relex.java
 
 cd $OKAPI_JAVABIN
-javah -d $OKAPI_BINDIR -jni relex
+javah -d $OKAPI_BINDIR -jni org.OkapiJNI
+#javah -d /home/okapi/src/ -jni org.OkapiJNI create org_OkapiJNI.h
 
 cd $OKAPI_SOURCE
-gcc -m32 -fPIC -DMMPUT -DHOLD_ATOMIC_MAPS=0 -DHOLD_DOCLENS=1 -I. -L.  -c  -o relex.o relex.c
-gcc -m32 -shared -o librelex.so *.o
+#gcc -m32 -fPIC -DMMPUT -DHOLD_ATOMIC_MAPS=0 -DHOLD_DOCLENS=1 -I. -L.  -c  -o relex.o relex.c
+#gcc -m32 -shared -o librelex.so *.o
 #cp -f relex.* relex.o librelex.so $OKAPI_BINDIR
+
+cd $OKAPI_SOURCE
+gcc -m32 -fPIC -DMMPUT -DHOLD_ATOMIC_MAPS=0 -DHOLD_DOCLENS=1 -I. -L.  -c  -o relexOkapi.o relexOkapi.c
+gcc -m32 -shared -o libokapi-jni.so *.o
+cp -f relexOkapi.* librelexOkapi.so $OKAPI_BINDIR
 
 exit 0
