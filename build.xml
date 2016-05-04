@@ -1,0 +1,29 @@
+<project>
+
+    <target name="clean">
+        <delete dir="javabin"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="javabin"/>
+        <javac srcdir="javasrc" destdir="javabin"/>
+    </target>
+
+
+
+
+	<target name="jar">
+		<mkdir dir="javabin"/>
+	    <jar destfile="javabin/Okapi.jar" basedir="javabin">
+	        <zipgroupfileset dir="javabin" includes="*.jar"/>
+	    </jar>
+	</target>
+	
+
+	
+
+    <target name="run">
+        <java jar="javabin/Okapi.jar" fork="true"/>
+    </target>
+
+</project>
